@@ -1,0 +1,126 @@
+//
+// Custom Buttons Styles
+// --------------------------------------------------
+
+// Base styles
+// --------------------------------------------------
+
+.btn {
+  position: relative;
+  z-index: 1;
+  border-width: 0;
+  font-family: $font-family-sec;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  transition: .3s ease-out;
+  overflow: hidden;
+
+  > span { transition: inherit; }
+
+  &:focus,
+  &:active,
+  &:active:focus { outline: none; }
+
+
+  &,
+  &:active,
+  &.active {
+    &:focus,
+    &.focus {  }
+  }
+
+  &:hover,
+  &:focus,
+  &.focus {  }
+
+  &:active,
+  &.active {  }
+
+  &.disabled,
+  &[disabled],
+  fieldset[disabled] & {  }
+}
+
+
+// Alternate buttons
+// --------------------------------------------------
+
+html body .page {
+  .btn-default { @include button-variant-custom($white, $gray, $gray, $white, $brand-primary, $brand-primary); }
+  .btn-primary { @include button-variant-custom($white, $brand-primary, $brand-primary, $brand-primary, transparent, $brand-primary); }
+}
+
+// Success appears as green
+.btn-success {  }
+
+// Info appears as blue-green
+.btn-info {  }
+
+// Warning appears as orange
+.btn-warning {  }
+
+// Danger and error appear as red
+.btn-danger {  }
+
+
+// Button Sizes
+// --------------------------------------------------
+
+.btn-md {
+  @include make-button-layout(
+          $btn-height: 60px,
+          $btn-size: 20px,
+          $btn-border: 2px,
+          $horizontal-padding: 35px,
+          $border-radius: 0,
+          $min-width: 247px,
+          $size-ratios: (0: .8, ($screen-lg-2, $screen-height-2): 1)
+  );
+}
+
+.btn-md-1 {
+  @include make-button-layout(
+          $btn-height: 60px,
+          $btn-size: 20px,
+          $btn-border: 2px,
+          $horizontal-padding: 35px,
+          $border-radius: 0,
+          $min-width: 100%,
+          $size-ratios: (0: 1)
+  );
+}
+
+
+// Button Shapes
+// --------------------------------------------------
+
+.btn-rect-small { border-radius: $btn-border-radius-small; }
+.btn-rect-base { border-radius: $btn-border-radius-base; }
+.btn-rect-large { border-radius: $btn-border-radius-large; }
+
+
+// Button Icon styles
+// --------------------------------------------------
+
+.btn {
+  &.btn-icon, &.btn-icon-left, &.btn-icon-right {
+    .icon {
+      height: auto;
+      line-height: inherit;
+      vertical-align: middle;
+      transition: 0s;
+
+      &:before { vertical-align: top; }
+    }
+  }
+
+  &.btn-icon-left .icon {
+    float: left;
+    padding-right: 17px;
+  }
+
+  &.btn-icon-right .icon {
+    float: right;
+    padding-left: 17px;
+  }
+}

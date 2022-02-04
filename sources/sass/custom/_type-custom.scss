@@ -1,0 +1,356 @@
+//
+// Custom typography
+// --------------------------------------------------
+
+// Fonts
+// -------------------------
+
+.font-default {
+  font-family: $font-family-base;
+}
+
+// Basic Typography
+// -------------------------
+
+#{headings()} {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+h1, .h1 {
+  font-family: $font-family-sec;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: $gray-darker;
+
+  @include make-heading-layout((
+          0: (25px, 1.5),
+          $screen-sm-min: ($font-size-h1 * .6, 1.3),
+          $screen-lg-min: ($font-size-h1, $font-lh-h1)
+  ));
+}
+
+h2, .h2 {
+  @include make-heading-layout((
+          0: (24px, 1.5),
+          $screen-sm-min: ($font-size-h2 * .6, 1.2),
+          $screen-md-min: ($font-size-h2 * .8, 1.2),
+          $screen-lg-min: ($font-size-h2, $font-lh-h2)
+  ));
+}
+
+h3, .h3 {
+  font-family: $font-family-sec;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: $gray-darker;
+
+  @include make-heading-layout((
+          0: (23px, 1.2),
+          $screen-md-min: ($font-size-h3 * .8, 1.2),
+          $screen-lg-min: ($font-size-h3, $font-lh-h3)
+  ));
+}
+
+h4, .h4 {
+  font-family: $font-family-sec;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: $gray-darker;
+
+  @include make-heading-layout((
+          0: (22px, 1.2),
+          $screen-lg-1: ($font-size-h4, $font-lh-h4)
+  ));
+}
+
+h5, .h5 {
+  @include make-heading-layout((
+          0: (20px, 1.5),
+          $screen-sm-min: ($font-size-h5, $font-lh-h5)
+  ));
+}
+
+h6, .h6 {
+  @include make-heading-layout((
+          0: (17px, 1.5),
+          $screen-sm-min: ($font-size-h6, $font-lh-h6)
+  ));
+}
+
+h1, .h1,
+h2, .h2,
+h3, .h3,
+h4, .h4,
+h5, .h5,
+h6, .h6 {
+  a {
+    transition: .3s all ease;
+  }
+
+  a:hover {
+    color: $brand-primary;
+  }
+
+  .small {
+    color: $gray-dark;
+  }
+}
+
+p,
+.p,
+.list {
+  a:hover {
+    text-decoration: underline;
+  }
+}
+
+@media (min-width: $screen-xs) {
+  .big {
+    font-size: $font-size-large;
+    line-height: floor(($font-size-large * $line-height-large));
+
+    h1 &,
+    .h1 & {
+      font-size: 142.22%;
+      line-height: 1.125;
+    }
+
+    h2 &,
+    .h2 & {
+      font-size: 147.36%;
+      line-height: 1.142857142857143;
+    }
+  }
+}
+
+small,
+.small{
+  font-size: $font-size-small;
+  line-height: floor(($font-size-small * $line-height-small));
+}
+
+blockquote small,
+blockquote .small,
+small,
+.small {
+  font-size: 93.75%;
+
+  h1 &,
+  .h1 & {
+    font-size: 62.22222222222222%;
+  }
+
+  h2 &,
+  .h2 & {
+    font-size: 63.15789473684211%;
+  }
+
+  h3 &,
+  .h3 & {
+    font-size: 73.33333333333333%;
+  }
+
+  h4 &,
+  .h4 & {
+    font-size: 75%;
+  }
+
+  h5 &,
+  .h5 & {
+    font-size: 72.72727272727273%;
+  }
+
+  h6 &,
+  .h6 & {
+    font-size: 94.11764705882353%;
+  }
+}
+
+code {
+  padding: 5px 7px;
+  font-size: 75%;
+  color: $brand-danger;
+  background-color: $gray-lighter;
+  border-radius: 2px;
+}
+
+mark, .mark {
+  background-color: $brand-primary;
+  padding: .1em;
+}
+
+// Lists
+// -------------------------
+
+ul,
+ol {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.list {
+  > li + li {
+    margin-top: 10px;
+  }
+}
+
+// List inline
+//
+
+.list-inline {
+  margin-left: -5px;
+  margin-right: -5px;
+
+  > li {
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+}
+
+
+// Description Lists
+dl {
+  margin: 0;
+}
+
+// List terms
+//
+
+.list-terms {
+  margin-top: 35px;
+  dt + dd { margin-top: 12px; }
+  dd + dt { margin-top: 40px; }
+  p + p { margin-top: 16px; }
+}
+
+// List index
+//
+
+.list-index {
+  counter-reset: li;
+
+  li {
+    position: relative;
+    padding-left: 0;
+
+    .list-index-counter {
+
+      font-family: $font-family-sec;
+      font-weight: 400;
+      font-size: 30px;
+      line-height: 1.2;
+      color: $brand-primary;
+
+      &:before {
+        content: counter(li, decimal-leading-zero) "/";
+        counter-increment: li;
+      }
+    }
+
+    & + li { margin-top: 30px; }
+
+    @media (min-width: $screen-sm-min) {
+      padding-left: 100px;
+
+      .list-index-counter {
+        position: absolute;
+        left: 0;
+        top: -14px;
+        font-size: 50px;
+      }
+
+      & + li { margin-top: 45px; }
+    }
+
+  }
+}
+
+// List marked
+//
+
+.list-marked {
+  li {
+    position: relative;
+    padding-left: 16px;
+
+    &:before {
+      content: '';
+      display: inline-block;
+      background: $gray-dark;
+      width: 3px;
+      height: 3px;
+      position: absolute;
+      left: 0;
+      top: 50%;
+      @include transform (translateY(-50%));
+    }
+  }
+}
+
+
+// Misc
+// -------------------------
+
+// Blockquotes
+blockquote {
+   q{
+      &:before,
+      &:after{ content: none; }
+   }
+  cite { font-style: normal; }
+}
+
+// Addresses
+address {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+
+// Backgrounds
+// -------------------------
+
+// Contextual backgrounds
+//
+%context-dark {
+  &, #{headings()} { color: $white; }
+  a:hover { color: $gray; }
+  @at-root a#{&} { &:hover { color: $gray; }}
+}
+
+.bg-gray-base {
+  @include bg-variant-custom(#{$gray-base});
+  @extend %context-dark;
+}
+
+.bg-gray {
+  @include bg-variant-custom(#{$gray});
+}
+
+.bg-gray-lighter {
+  @include bg-variant-custom(#{$gray-lighter});
+}
+
+.bg-image-1 {
+  background-image: url("../images/home-01-2048x1229.jpg");
+  background-attachment: fixed;
+  background-size: cover;
+
+  .ios & { background-size: auto; }
+}
+
+// Colors
+// -------------------------
+
+// Contextual colors
+//
+
+.page {
+  @include text-emphasis-variant('.text-primary', $brand-primary, $gray-darker);
+  @include text-emphasis-variant('.text-darker', $gray-darker, $brand-primary);
+  @include text-emphasis-variant('.text-dark', $gray-dark, $brand-primary);
+  @include text-emphasis-variant('.text-gray', $gray);
+  @include text-emphasis-variant('.text-white', $white);
+}

@@ -1,0 +1,150 @@
+extends  _skeleton
+
+block variables
+  - var activeIndex = 1
+
+block title
+  title Home
+
+block page
+  // Page Header
+  include _header
+
+  // Page Content
+  main.page-content
+    section.bg-image-1.mask-1.vertical-limiter-1.flex-center
+      .shell
+        .jumbotron.text-center
+          h1
+            | Improve your
+            br.veil.reveal-md-block
+            = " practical language"
+            br.veil.reveal-md-block
+            = " skills"
+
+    section.section-40.section-lg-139
+      .shell
+        h3.text-center
+          span.text-bold The leader in
+          br
+          span teaching languages
+          span.divider
+        .range
+          .cell-md-4: p LC -  Language Centre was founded in 1989 and has been accredited by The British Council since 1993. Our school is the longest established independent institution offering English language courses in Cardiff, and is licensed as a Tier 4 Highly Trusted Sponsor (HTS) for students by the UK Border Agency.
+          .cell-md-4: p It is our aim to offer top quality language programmes at affordable prices and provide our students with personal care and attention in a homely and friendly learning environment. The owners, Greg Nelson and Grace Durighello, are both qualified EFL (English as a Foreign Language) teachers with several years'
+          .cell-md-4: p experience and are personally involved in the day-to-day running of the school at every level. We offer a range of English language courses throughout the year and although the school has grown quite a lot since we started, we are still essentially a small school.
+
+    section.bg-gray-lighter.section-40.section-lg-139
+      h3.text-center.inset-15
+        span.text-bold English courses
+        span.divider
+      .range.range-sm-center.inset-xs-30
+        .cell-sm-6.cell-lg-4
+          +banner({
+            fakeHeading: "<span>General</span><br><span>English Course</span>",
+            heading: "<span class=\"text-bold\">General</span><br><span>English Course</span>",
+            content: "The General English Course teaches students the basics of the language including the four language skills, i.e.reading, writing, speaking and listening, as well as pronunciation and grammar."
+          })
+        .cell-sm-6.cell-lg-4
+          +banner({
+            fakeHeading: "<span>Business</span><br><span>English</span>",
+            heading: "<span class=\"text-bold\">Business</span><br><span>English</span>",
+            content: "In modern society, business is based on international contact and our school assists in building your business by improving your client service through enhanced communication at work and the ability to communicate with clients in their mother tongue."
+          })
+        .offset-top-30.cell-sm-6.cell-lg-4.offset-mac-top-0
+          +banner({
+            fakeHeading: "<span>Online</span><br><span>English Course</span>",
+            heading: "<span class=\"text-bold\">Online</span><br><span>English Course</span>",
+            content: "Online lessons with LC can happen in the comfort of your own home or office, no matter where you are in the world."
+          })
+      .text-center.offset-top-30.offset-lg-top-60
+        a.btn.btn-primary.btn-md(href="#") See all courses
+
+    section.section-40.section-lg-139
+      .shell
+        h3.text-center
+          span.text-bold Your knowledge is the way
+          br
+          span to your success
+          span.divider
+        ol.list-index
+          li
+            .list-index-counter
+            | Bring a picture ID and Social Security card to register. If you do not have a Social Security card, the Language Center will provide you with a student identification number to use for school purposes.
+          li
+            .list-index-counter
+            | Complete the Language Center application.
+          li
+            .list-index-counter
+            | Complete the top part of the Test Appointment Form.
+          li
+            .list-index-counter
+            | Take the placement exam to determine your level. Bring ID to the test site.
+          li
+            .list-index-counter
+            | Register at the Language Center in F Building, Room 309. Tuition payment is due at time of registration. A payment plan is available for eligible students - 60% of the tuition, plus a $25 fee to be paid when registering. The balance must be paid in total by the end of the 5th week of classes. Financial Aid is NOT available for the Institute.
+
+    section.bg-gray-lighter.section-40.section-lg-139
+      h3.text-center.inset-15
+        span.text-bold Watch our introductory videos
+        br
+        span & learn more about Language Center
+        span.divider
+      .range.range-sm-center.inset-xs-30
+        .cell-sm-6.cell-md-4
+          +thumbnail-video({
+            thumbVideo: "https://www.youtube.com/watch?v=jtAfe1_ikJw",
+            thumbImage: "home-02-642x400",
+            thumbHeading: "Holiday Language Course 2015"
+          })
+        .cell-sm-6.cell-md-4
+          +thumbnail-video({
+            thumbVideo: "https://www.youtube.com/watch?v=jtAfe1_ikJw",
+            thumbImage: "home-03-642x400",
+            thumbHeading: "Introduction to LC"
+          })
+        .offset-top-30.cell-sm-6.cell-md-4.offset-md-top-0
+          +thumbnail-video({
+            thumbVideo: "https://www.youtube.com/watch?v=jtAfe1_ikJw",
+            thumbImage: "home-04-642x400",
+            thumbHeading: "Preparing Students for IELTS"
+          })
+
+      .text-center.offset-top-30.offset-lg-top-60
+        a.btn.btn-primary.btn-md(href="#") See all videos
+
+    section.section-40.section-lg-139
+      .shell
+        h3.text-center
+          span.text-bold Contact form
+          span.divider
+        // RD Mailform
+        form.rd-mailform.offset-top-41.offset-lg-top-72(data-form-output="form-output-global", data-form-type='contact', method='post', action='bat/rd-mailform.php')
+          .range
+            .cell-sm-4
+              .form-group
+                label.form-label(for="contact-name") Name:
+                input#contact-name.form-control(type="text" name="name" data-constraints="@Required @Alpha")
+            .cell-sm-4.offset-top-20.offset-sm-top-0
+              .form-group
+                label.form-label(for="contact-email") E-mail:
+                input#contact-email.form-control(type="email" name="email" data-constraints="@Required @Email")
+            .cell-sm-4.offset-top-20.offset-sm-top-0
+              .form-group
+                label.form-label(for="contact-phone") Phone:
+                input#contact-phone.form-control(type="text" name="phone" data-constraints="@Required @Numeric")
+            .cell-sm-12.offset-top-30
+              .form-group
+                label.form-label(for="contact-message") Message:
+                textarea#contact-message.form-control(name="message" data-constraints="@Required")
+            .cell-sm-12.offset-top-30.offset-lg-top-60.text-center
+              button(type="submit").btn.btn-primary.btn-md Send
+
+    // RD Google Map
+    section.rd-google-map(class="rd-google-map__model", data-zoom='15', data-x='-73.9874068', data-y='40.643180', data-styles='[{"featureType":"administrative","elementType":"all","stylers":[{"visibility":"on"},{"lightness":33}]},{"featureType":"landscape","elementType":"all","stylers":[{"color":"#f2e5d4"}]},{"featureType":"poi.park","elementType":"geometry","stylers":[{"color":"#c5dac6"}]},{"featureType":"poi.park","elementType":"labels","stylers":[{"visibility":"on"},{"lightness":20}]},{"featureType":"road","elementType":"all","stylers":[{"lightness":20}]},{"featureType":"road.highway","elementType":"geometry","stylers":[{"color":"#c5c6c6"}]},{"featureType":"road.arterial","elementType":"geometry","stylers":[{"color":"#e4d7c6"}]},{"featureType":"road.local","elementType":"geometry","stylers":[{"color":"#fbfaf7"}]},{"featureType":"water","elementType":"all","stylers":[{"visibility":"on"},{"color":"#acbcc9"}]}]')
+      ul.map_locations
+        li(data-x='-73.9874068', data-y='40.643180')
+          p 9870 St Vincent Place, Glasgow, DC 45 Fr 45.
+
+  // Page Footer
+  include _footer

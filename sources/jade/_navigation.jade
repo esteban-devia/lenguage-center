@@ -1,0 +1,55 @@
+- var rd_navbar_data_ajuster = {"data-sm-stick-up-offset" : "1px", "data-md-stick-up-offset" : "1px", "data-lg-stick-up-offset" : "1px", "data-md-layout":'rd-navbar-fullwidth', "data-md-device-layout":'rd-navbar-fullwidth',  "data-lg-device-layout":'rd-navbar-static',  "data-lg-layout":'rd-navbar-static'}
+
+// RD Navbar
+.rd-navbar-wrap.rd-navbar-default(class=(activeIndex == 1)?"rd-navbar-absolute":"")
+  nav.rd-navbar(data-layout='rd-navbar-fixed', data-sm-layout='rd-navbar-fullwidth', data-lg-layout='rd-navbar-static')&attributes(rd_navbar_data_ajuster)
+    .rd-navbar-outer: .rd-navbar-inner
+
+      // RD Navbar Panel
+      .rd-navbar-cell.rd-navbar-panel
+
+        // RD Navbar Toggle
+        button.rd-navbar-toggle(data-rd-navbar-toggle='.rd-navbar-nav'): span.toggle-icon
+
+        // RD Navbar Brand
+        a.rd-navbar-brand(href='./')
+          .brand-name
+            .text-ubold Language
+            div Center
+
+        // RD Navbar Toggle
+        button.info-toggle(data-rd-navbar-toggle='.rd-navbar-info'): span.toggle-icon
+
+      // RD Navbar Nav
+      .rd-navbar-cell.rd-navbar-nav-wrap
+        ul.rd-navbar-nav
+          li(class=(activeIndex == 1 ? 'active' : '')): a(href='./') Home
+          li(class=(activeIndex == 2 ? 'active' : ''))
+            a(href='about.html') About
+            // RD Navbar Dropdown
+            ul.rd-navbar-dropdown
+              li
+                a(href='#') What we do
+                // RD Navbar Dropdown
+                ul.rd-navbar-dropdown
+                  li: a(href='#') English Courses
+                  li: a(href='#') Specialised Courses
+              li: a(href='#') Who we are
+              li: a(href='#') Where we've been
+              li: a(href='#') Where we're going
+          li(class=(activeIndex == 3 ? 'active' : '')): a(href='courses.html') Courses
+          li(class=(activeIndex == 4 ? 'active' : ''))
+            a(href='news.html') News
+            // RD Navbar Dropdown
+            ul.rd-navbar-dropdown
+              li: a(href='blog-post.html') Blog Post
+              li: a(href='404.html') 404 Page
+          li(class=(activeIndex == 5 ? 'active' : '')): a(href='contacts.html') Contacts
+
+      // RD Navbar Info
+      .rd-navbar-cell.rd-navbar-info
+        a(href="callto:#") 800-2345-6789
+        address
+          | 28 Jackson Blvd Ste 1020
+          br
+          | Chicago IL 60604-2340

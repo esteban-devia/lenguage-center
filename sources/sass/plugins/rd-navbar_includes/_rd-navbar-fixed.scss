@@ -1,0 +1,113 @@
+/*
+* Fixed Layout
+*/
+
+html.rd-navbar-fixed-linked {
+  body { padding-top: $rd-navbar-min-height; }
+  .rd-navbar-wrap { position: absolute; }
+}
+
+.rd-navbar-default {
+  .rd-navbar-fixed {
+    display: block;
+
+    .rd-navbar-toggle {
+      display: block;
+      float: left;
+
+      .toggle-icon {
+        &, &:before, &:after { background: $rd-navbar-fixed-panel-color; }
+      }
+
+      &.active .toggle-icon { background: transparent; }
+    }
+
+    .info-toggle {
+      display: block;
+      float: right;
+
+      .toggle-icon {
+        &, &:before, &:after { background: $rd-navbar-fixed-panel-color; }
+      }
+
+      &:hover .toggle-icon {
+        &, &:before, &:after { background: $rd-navbar-fixed-toggle-color; }
+      }
+    }
+
+    .rd-navbar-panel {
+      display: block;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: $rd-navbar-min-height;
+
+      &:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: -1;
+        background: $rd-navbar-fixed-panel-background;
+        box-shadow: $rd-navbar-shadow;
+      }
+    }
+
+    .rd-navbar-brand {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      @include transform(translateX(-50%));
+      display: flex;
+      align-items: center;
+      height: 100%;
+      @include brand-size-conversion(.6);
+    }
+
+    .rd-navbar-nav {
+      position: fixed;
+      top: $rd-navbar-min-height;
+      bottom: 0;
+      left: 0;
+      @include transform(translateX(-$rd-navbar-nav-min-width - 30px));
+      z-index: -1;
+      display: block;
+      width: $rd-navbar-nav-min-width;
+      padding: 4px;
+      padding-top: 10px;
+      text-transform: uppercase;
+      overflow-y: scroll;
+      overflow-x: hidden;
+      -webkit-overflow-scrolling: touch;
+      box-shadow: $rd-navbar-shadow;
+
+      &.active { @include transform(translateX(0)); }
+    }
+
+    .rd-navbar-info {
+      position: fixed;
+      top: $rd-navbar-min-height;
+      right: 0;
+      z-index: -1;
+      @include transform(translateX(101%));
+      display: block;
+      padding: 20px;
+      text-align: right;
+      box-shadow: $rd-navbar-fixed-shadow;
+      background: $rd-navbar-fixed-panel-background;
+      color: $rd-navbar-fixed-panel-color;
+
+      address {
+        color: $rd-navbar-fixed-panel-color;
+      }
+
+      &.active {
+        @include transform(translateX(0));
+      }
+    }
+
+  }
+}

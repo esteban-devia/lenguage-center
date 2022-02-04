@@ -1,0 +1,69 @@
+//
+// Scaffolding
+// --------------------------------------------------
+
+
+// Reset fonts for relevant elements
+
+input,
+button,
+select,
+textarea {
+  outline: none;
+}
+
+// Body reset
+
+body {
+  font-weight: $font-weight-base;
+}
+
+// Page styles
+
+.page {
+  overflow: hidden;
+  background-color: $content-bg;
+}
+
+
+// Links
+
+a {
+  transition: .3s;
+
+  &, &:focus {
+    color: $link-color;
+    text-decoration: none;
+  }
+
+  &:hover {
+    color: $link-hover-color;
+    text-decoration: $link-hover-decoration;
+  }
+
+  &:hover,
+  &:focus {
+    outline: none;
+  }
+}
+
+
+// Horizontal rules
+
+hr {
+  margin-top: 0;
+  margin-bottom: 0;
+  border-top: 1px solid $hr-border;
+}
+
+
+// Images
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+p {
+  margin-bottom: 0;
+}

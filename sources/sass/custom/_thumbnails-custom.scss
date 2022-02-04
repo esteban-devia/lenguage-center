@@ -1,0 +1,203 @@
+//
+// Custom Thumbnails
+// --------------------------------------------------
+
+.thumbnail{
+  padding: 0;
+  margin: 0;
+  border: none;
+  border-radius: 0;
+
+  .caption{
+    padding: 0;
+    color: $gray-base;
+  }
+}
+
+.img-thumbnail,
+.thumbnail{
+  box-shadow: none;
+}
+
+// Make thumbnails to fit entire container width
+.thumbnail-block {
+  display: block;
+
+  > img,
+  a > img {
+    width: 100%;
+    height: auto;
+  }
+}
+
+
+.thumbnail-variant-1 {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  will-change: transform;
+
+  .img-container {
+    position: relative;
+
+    img { min-width: 100%; }
+  }
+
+  .thumbnail-overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    transition: .3s all ease;
+    opacity: 0;
+    color: $white;
+
+    .thumbnail-icon {
+      @include transform(scale(0));
+      width: 112px;
+      height: 112px;
+      font-size: 30px;
+      line-height: 112px;
+      border-radius: 50%;
+      text-align: center;
+      transition: .3s;
+      background: rgba($white,.7);
+      color: $gray-darker;
+    }
+  }
+
+  .thumbnail-mask {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    background: rgba($gray-base,0);
+    transition: .3s;
+    opacity: 0;
+  }
+
+  .heading {
+    margin-top: 20px;
+    padding: 0 10px;
+    text-align: center;
+  }
+
+  .img-container {
+    &:hover, .ios & {
+      .thumbnail-mask,
+      .thumbnail-overlay { opacity: 1; }
+      .thumbnail-icon { @include transform(scale(1)); }
+    }
+  }
+
+  @media (min-width: $screen-lg-min) {
+    .heading {
+      margin-top: 35px;
+      text-align: center;
+    }
+  }
+
+  @media (min-width: $screen-xl-min) {
+    .heading {
+      padding: 0 20%;
+    }
+  }
+}
+
+
+.thumbnail-variant-2 {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  will-change: transform;
+
+  .img-container {
+    position: relative;
+    height: 400px;
+    background-size: cover;
+    background-position: center center;
+  }
+
+  .thumbnail-overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    overflow: hidden;
+    transition: .3s all ease;
+    opacity: 0;
+  }
+
+  .thumbnail-mask {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    background: rgba($white,.95);
+    transition: opacity 0.35s ease-out;
+    opacity: 0;
+
+    &:before,
+    &:after {
+      content: "";
+      position: absolute;
+      border: 1px solid $brand-primary;
+      transition: opacity 0.35s ease-out, width 0.35s, height 0.35s;
+      pointer-events: none;
+      opacity: 0;
+    }
+
+    &:before {
+      height: 0;
+      border-width: 0 1px;
+    }
+
+    &:after {
+      width: 0;
+      border-width: 1px 0;
+    }
+  }
+
+  .ios & {
+    .thumbnail-mask { background: rgba($white,.8); }
+  }
+
+  .ie-11 & {
+    .thumbnail-overlay {
+      > * { max-width: 100%; }
+    }
+  }
+
+  &:hover, .ios & {
+    .thumbnail-mask,
+    .thumbnail-overlay { opacity: 1; }
+
+    .thumbnail-mask {
+      &:before,
+      &:after {
+        opacity: 1;
+      }
+    }
+  }
+
+  @include thumbnail-2-size-conversion(.5);
+
+  @media (min-width: $screen-lg-2) {
+    @include thumbnail-2-size-conversion(1);
+  }
+
+}

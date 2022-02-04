@@ -1,0 +1,108 @@
+/*
+* Fullwidth Layout
+*/
+
+.rd-navbar-default {
+  .rd-navbar-fullwidth {
+    display: block;
+
+    .rd-navbar-inner {
+      position: relative;
+      @include display-flex;
+      @include justify-content(space-between);
+      @include align-items(center);
+      @include flex-wrap(wrap);
+
+      .rd-navbar-cell {
+        @include flex-shrink(0);
+      }
+
+      .rd-navbar-nav-wrap {
+        @include flex-basis(auto);
+      }
+    }
+
+    .rd-navbar-brand {
+      @include brand-size-conversion(.65);
+    }
+
+    .rd-navbar-nav-wrap {
+      display: block;
+      padding-right: 35px;
+    }
+
+    .rd-navbar-nav {
+      > li {
+        margin-top: 14px;
+        margin-bottom: 14px;
+
+        & > a { margin: 10px 0; }
+        & + li { margin-left: 25px; }
+
+        // Dropdown
+        // All levels styles
+        .rd-navbar-dropdown {
+          padding: 20px 30px;
+          width: round($rd-navbar-dropdown-width * .95);
+        }
+
+        // Specific levels styles
+        > .rd-navbar-dropdown { // First level dropdown
+          top: 100%;
+          left: -30px;
+
+          .rd-navbar-dropdown { // Second level dropdown
+            top: -20px;
+            right: auto;
+            left: calc(100% + 40px);
+          }
+        }
+      }
+    }
+
+    .info-toggle {
+      position: absolute;
+      right: 0;
+      top: calc(50% - 25px);
+      display: block;
+
+      .toggle-icon {
+        &, &:before, &:after { background: $rd-navbar-color; }
+      }
+
+      &:hover .toggle-icon {
+        &, &:before, &:after { background: $brand-primary; }
+      }
+    }
+
+    .rd-navbar-info {
+      position: fixed;
+      top: 70px; // [rd-navbar-fullwidth height]
+      right: 0;
+      z-index: -1;
+      @include transform(translateX(101%));
+      display: block;
+      padding: 20px;
+      box-shadow: $rd-navbar-shadow;
+      background: $rd-navbar-background;
+      color: $rd-navbar-color;
+
+      &.active {
+        @include transform(translateX(0));
+      }
+    }
+
+    // RD Navbar Clone
+    &.rd-navbar--is-clone { }
+
+    // RD Navbar Stuck
+    &.rd-navbar--is-stuck,
+    &.rd-navbar--is-clone {
+      .rd-navbar-fullwidth-collapse { display: none; }
+    }
+
+    // RD Navbar States
+    .rd-navbar-fullwidth-visible { display: block; }
+    .rd-navbar-fullwidth-hidden { display: none; }
+  }
+}

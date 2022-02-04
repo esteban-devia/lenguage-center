@@ -1,0 +1,68 @@
+//
+// Offsets
+// --------------------------------------------------
+
+* + .divider                { margin-top: 15px; }
+* + .range                  { margin-top: 20px; }
+* + .list-index             { margin-top: 20px; }
+* + .rd-mailform            { margin-top: 20px; }
+* + .list-terms             { margin-top: 20px; }
+* + .link                   { margin-top: 15px; }
+h4 + p                      { margin-top: 11px; }
+.news-post + .news-post     { margin-top: 40px; }
+
+@media (min-width: $screen-sm-min) {
+  * + .divider                { margin-top: 28px; }
+  * + .range                  { margin-top: 30px; }
+  * + .list-index             { margin-top: 30px; }
+  * + .rd-mailform            { margin-top: 30px; }
+  * + .list-terms             { margin-top: 30px; }
+  * + .link                   { margin-top: 27px; }
+}
+
+@media (min-width: $screen-lg-min) {
+  * + .range                  { margin-top: 40px; }
+  * + .list-index             { margin-top: 40px; }
+  * + .rd-mailform            { margin-top: 40px; }
+  * + .list-terms             { margin-top: 40px; }
+  .news-post + .news-post     { margin-top: 60px; }
+}
+
+@media (min-width: $screen-lg-2) and (min-width: $screen-height-2) {
+  * + .range                  { margin-top: 62px; }
+  * + .list-index             { margin-top: 75px; }
+  * + .rd-mailform            { margin-top: 70px; }
+  * + .list-terms             { margin-top: 63px; }
+  .news-post + .news-post     { margin-top: 144px; }
+}
+
+// Insets
+// -------------------------
+
+$insets: (0, 10px, 15px, 30px);
+
+@include indent-responsive(inset, "", (padding-left, padding-right), $medias, $insets);
+@include indent-responsive(inset, left, padding-left, $medias, $insets);
+@include indent-responsive(inset, right, padding-right, $medias, $insets);
+
+
+// Elements
+// -------------------------
+
+
+// Grid
+// -------------------------
+
+
+// Sections
+// -------------------------
+
+
+// Responsive
+// -------------------------
+
+$offsets: (0, 6px, 10px, 30px, 39px, 41px, 54px, 60px, 65px);
+
+html .page{
+  @include indent-responsive(offset, top, margin-top, $medias, $offsets);
+}

@@ -1,0 +1,98 @@
+//- Functions
+- function getSize(imageName) { return imageName.split('-').pop().split('x'); }
+
+//- Image
+mixin img(data)
+  if(typeof(data) == "string")
+    - var size = getSize(data);
+    img(src='images/' + data + ".jpg", alt='', width=size[0], height=size[1])
+  else if(typeof(data) == "object" && !data.name)
+    //- [name, extension, clas]
+    - var size = getSize(data[0]);
+    - if(!data[1]) {data[1] = ".jpg"};
+    img(class=data[2] src='images/' + data[0] + data[1], alt='', width=size[0], height=size[1])
+  else if(typeof(data) == "object")
+    //- {name, extension, clas}
+    - var size = getSize(data.name);
+    - if(!data.extension) {data.extension = ".jpg"};
+    img(class=data.clas src='images/' + data.name + data.extension, alt='', width=size[0], height=size[1])
+
+
+mixin banner(data)
+  //- {clas, fakeHeading, heading, content, link}
+  .banner(class=data.clas)
+    h4.heading: a(href="#")!= data.heading
+    p.content #{data.content}
+    h4.fake-heading!= data.fakeHeading
+
+mixin thumbnail-video(data)
+  //- {thumbVideo, thumbImage, thumbHeading}
+  figure.thumbnail.thumbnail-variant-1
+    .img-container
+      +img(data.thumbImage)
+      .thumbnail-mask
+      a.thumbnail-overlay(href=data.thumbVideo, data-lightbox="iframe")
+        .thumbnail-icon.fa-play
+    h4.heading: a(href="#") #{data.thumbHeading}
+
+mixin thumbnail-2(data)
+  //- {thumbImage, thumbHeading, thumbContent}
+  figure.thumbnail.thumbnail-variant-2
+    .img-container(style="background-image: url(\"images/"+data.thumbImage+".jpg\")")
+    .thumbnail-mask
+    .thumbnail-overlay
+      .thumbnail-caption
+        h4.heading: a(href="#")!= data.thumbHeading
+        p.content #{data.thumbContent}
+
+//- Post meta
+mixin post-meta(data)
+  .post-meta.text-primary
+    each obj in data
+      .meta-block
+        if(obj.icon)
+          span.icon(class=obj.icon)
+          = " "
+        if(obj.meta)
+          if(obj.link)
+            a(href=obj.link) #{obj.meta}
+          else
+            | #{obj.meta}
+
+mixin news-post(data)
+  //- {image, heading, meta, content, link}
+  article.news-post.range
+    .cell-md-7
+      +img(data.image)
+    .cell-md-5
+      h4.heading: a(href=(data.link)?data.link:"blog-post.html") #{data.heading}
+      +post-meta([
+        {icon:"fa-calendar", meta:data.meta[0]},
+        {icon:"fa-user", meta:data.meta[1]},
+        {icon:"fa-comments", meta:data.meta[2], link:(data.link)?data.link:"blog-post.html#comments"}
+      ])
+      p #{data.content}
+      a.btn.btn-md.btn-primary(href=(data.link)?data.link:"blog-post.html") Read more
+
+//- Comment
+mixin comment(data)
+  //- {image, content, commentMeta}
+  .comment.unit.unit-1.unit-vertical.unit-xs-horizontal
+    .unit-left
+      if(data.image)
+        +img(data.image)
+      else
+        span.icon.icon-xl.icon-primary.fa-user
+    .unit-body
+      if(data.commentMeta)
+        .comment-meta.text-xs-left
+          span.text-gray-lighter!= "Posted by "
+          a.text-darker(href="#") #{data.commentMeta.meta1}
+          .pull-sm-right
+            .meta-block
+              a.icon.icon-xs.icon-primary-2.material-icons-favorite(href="#")
+            .meta-block
+              a.underline(href="#") reply
+            .meta-block
+              | #{data.commentMeta.meta2}
+      p #{data.content}

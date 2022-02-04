@@ -1,0 +1,45 @@
+//
+// Indent Utilities
+// --------------------------------------------------
+
+@mixin indent-responsive($preffix, $postfix, $rules, $medias, $offsets) {
+  @if ($postfix != '' and $postfix != null) {
+    $postfix: #{$postfix}-;
+  }
+
+  @if ($preffix != '' and $preffix != null) {
+    $preffix: #{$preffix}-;
+  }
+
+  @each $resolution, $alias in $medias {
+    @if ($resolution == 0) {
+      @each $offset in $offsets {
+        .#{$preffix}#{$postfix}#{strip-unit($offset)} {
+          @each $rule in $rules {
+            #{$rule}: $offset;
+          }
+        }
+      }
+    } @else if type-of($resolution) == number {
+      @media (min-width: $resolution) {
+        @each $offset in $offsets {
+          .#{$preffix}#{$alias}-#{$postfix}#{strip-unit($offset)} {
+            @each $rule in $rules {
+              #{$rule}: $offset;
+            }
+          }
+        }
+      }
+    } @else if type-of($resolution) == list {
+      @media (min-width: nth($resolution, 1)) and (min-height: nth($resolution, 2)) {
+        @each $offset in $offsets {
+          .#{$preffix}#{$alias}-#{$postfix}#{strip-unit($offset)} {
+            @each $rule in $rules {
+              #{$rule}: $offset;
+            }
+          }
+        }
+      }
+    }
+  }
+}

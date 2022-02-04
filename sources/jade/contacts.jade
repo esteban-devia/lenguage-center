@@ -1,0 +1,49 @@
+extends  _skeleton
+
+block variables
+  - var activeIndex = 5
+
+block title
+  title Contacts
+
+block page
+  // Page Header
+  include _header
+
+  // Page Content
+  main.page-content
+    section.section-40.section-lg-139
+      .shell
+        h3.text-center
+          span.text-bold Contact form
+          span.divider
+        // RD Mailform
+        form.rd-mailform.offset-top-41.offset-lg-top-72(data-form-output="form-output-global", data-form-type='contact', method='post', action='bat/rd-mailform.php')
+          .range
+            .cell-sm-4
+              .form-group
+                label.form-label(for="contact-name") Name:
+                input#contact-name.form-control(type="text" name="name" data-constraints="@Required @Alpha")
+            .cell-sm-4.offset-top-20.offset-sm-top-0
+              .form-group
+                label.form-label(for="contact-email") E-mail:
+                input#contact-email.form-control(type="email" name="email" data-constraints="@Required @Email")
+            .cell-sm-4.offset-top-20.offset-sm-top-0
+              .form-group
+                label.form-label(for="contact-phone") Phone:
+                input#contact-phone.form-control(type="text" name="phone" data-constraints="@Required @Numeric")
+            .cell-sm-12.offset-top-30
+              .form-group
+                label.form-label(for="contact-message") Message:
+                textarea#contact-message.form-control(name="message" data-constraints="@Required")
+            .cell-sm-12.offset-top-30.offset-lg-top-60.text-center
+              button(type="submit").btn.btn-primary.btn-md Send
+
+    // RD Google Map
+    section.rd-google-map(class="rd-google-map__model", data-zoom='15', data-x='-73.9874068', data-y='40.643180', data-styles='[{"featureType":"administrative","elementType":"all","stylers":[{"visibility":"on"},{"lightness":33}]},{"featureType":"landscape","elementType":"all","stylers":[{"color":"#f2e5d4"}]},{"featureType":"poi.park","elementType":"geometry","stylers":[{"color":"#c5dac6"}]},{"featureType":"poi.park","elementType":"labels","stylers":[{"visibility":"on"},{"lightness":20}]},{"featureType":"road","elementType":"all","stylers":[{"lightness":20}]},{"featureType":"road.highway","elementType":"geometry","stylers":[{"color":"#c5c6c6"}]},{"featureType":"road.arterial","elementType":"geometry","stylers":[{"color":"#e4d7c6"}]},{"featureType":"road.local","elementType":"geometry","stylers":[{"color":"#fbfaf7"}]},{"featureType":"water","elementType":"all","stylers":[{"visibility":"on"},{"color":"#acbcc9"}]}]')
+      ul.map_locations
+        li(data-x='-73.9874068', data-y='40.643180')
+          p 9870 St Vincent Place, Glasgow, DC 45 Fr 45.
+
+  // Page Footer
+  include _footer

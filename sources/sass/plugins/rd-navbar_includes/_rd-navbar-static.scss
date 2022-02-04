@@ -1,0 +1,109 @@
+/*
+* Static Layout
+*/
+
+.rd-navbar-default {
+  .rd-navbar-static {
+    display: block;
+
+    .rd-navbar-inner {
+      position: relative;
+      max-width: $rd-navbar-width;
+      margin-left: auto;
+      margin-right: auto;
+      @include display-flex;
+      @include justify-content(space-between);
+      @include align-items(center);
+      @include flex-wrap(wrap);
+
+      .rd-navbar-cell {
+        @include flex-shrink(0);
+      }
+    }
+
+    .rd-navbar-brand {
+      @include brand-size-conversion(.65);
+    }
+
+    .rd-navbar-nav-wrap {
+      display: block;
+    }
+
+    .rd-navbar-nav {
+      > li {
+        margin-top: 28px;
+        margin-bottom: 28px;
+
+        & > a { margin: 28px 0; }
+        & + li { margin-left: 41px; }
+      }
+
+    }
+
+    // RD Navbar Clone
+    &.rd-navbar--is-clone { }
+
+    // RD Navbar Stuck
+    &.rd-navbar--is-stuck,
+    &.rd-navbar--is-clone {
+      .rd-navbar-nav {
+        > li {
+          margin-top: 0;
+          margin-bottom: 0;
+
+          & > a { margin: 25px 0; }
+        }
+      }
+
+      .rd-navbar-info {
+        @include info-size-conversion(.7);
+      }
+
+      .rd-navbar-static-collapse { display: none; }
+    }
+
+    // RD Navbar States
+    .rd-navbar-static--visible { display: block; }
+    .rd-navbar-static--hidden { display: none; }
+  }
+
+  &.rd-navbar-absolute .rd-navbar-static {
+    .rd-navbar-brand {
+      @include brand-size-conversion(1);
+    }
+
+    .rd-navbar-nav {
+      > li {
+        @media (min-width: $screen-lg-2) and (min-height: $screen-height-2) {
+          margin-top: 84px;
+          margin-bottom: 84px;
+        }
+      }
+    }
+
+    .rd-navbar-info {
+      @include info-size-conversion(1);
+    }
+
+    // RD Navbar Stuck
+    &.rd-navbar--is-stuck,
+    &.rd-navbar--is-clone {
+      .rd-navbar-brand {
+        @include brand-size-conversion(.65);
+      }
+
+      .rd-navbar-nav {
+        > li {
+          margin-top: 0;
+          margin-bottom: 0;
+
+          & > a { margin: 25px 0; }
+        }
+      }
+
+      .rd-navbar-info {
+        @include info-size-conversion(.7);
+      }
+    }
+  }
+}

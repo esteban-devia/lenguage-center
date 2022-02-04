@@ -1,0 +1,53 @@
+/*
+* Sidebar Layout
+*/
+
+html.rd-navbar-sidebar-linked {}
+
+.rd-navbar-sidebar {
+  display: block;
+  position: fixed;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: $rd-navbar-nav-min-width;
+  @include transform(translateX($rd-navbar-nav-min-width));
+
+  .rd-navbar-inner {
+    height: 100%;
+    background: $rd-navbar-background;
+  }
+
+  .rd-navbar-panel {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+  }
+
+  .rd-navbar-brand {
+    display: inline-block;
+  }
+
+  .rd-navbar-toggle {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 100%;
+  }
+
+  .rd-navbar-nav-wrap {height: auto;}
+
+  .rd-navbar-nav {
+    display: block;
+    height: 100%;
+    padding: 4px;
+    overflow: scroll;
+    -webkit-overflow-scrolling: touch;
+    text-transform: none;
+  }
+}
+
+.rd-navbar-sidebar.active {
+  @include transform(translateX(0));
+}

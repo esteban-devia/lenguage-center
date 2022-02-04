@@ -1,0 +1,54 @@
+// Custom icons
+//
+
+@mixin make-icon-layout($icon-size, $icon-fz, $size-ratios: (0: 1)) {
+  $base-lh: $icon-size - 0px;
+
+  @mixin size-conversion($size-ratio) {
+    &,
+    .btn-icon &,
+    .btn-icon-left &,
+    .btn-icon-right & {
+      width: $icon-size * $size-ratio;
+      height: $icon-size * $size-ratio;
+      line-height: $base-lh * $size-ratio;
+      font-size: $icon-fz * $size-ratio;
+    }
+  }
+
+  @mixin make-size-ratio($size-ratios) {
+    @each $resolution, $size-ratio in $size-ratios {
+      @if ($resolution == 0) {
+        @if ($size-ratio != none) {
+          @include size-conversion($size-ratio);
+        }
+      } @else if type-of($resolution) == number {
+        @if ($size-ratio != none) {
+          @media (min-width: $resolution) {
+            @include size-conversion($size-ratio);
+          }
+        }
+      } @else if type-of($resolution) == list {
+        @if ($size-ratio != none) {
+          @media (min-width: nth($resolution, 1)) and (min-height: nth($resolution, 2)) {
+            @include size-conversion($size-ratio);
+          }
+        }
+      }
+    }
+  }
+
+  @include make-size-ratio($size-ratios);
+}
+
+@mixin make-icon-appearance($clr, $bg: transparent, $bd: transparent, $clr-hover: $clr, $bg-hover: $bg, $bd-hover: $bd) {
+  color: $clr;
+  background: $bg;
+  border-color: $bd;
+
+  @at-root a#{&}:hover {
+    color: $clr-hover;
+    background: $bg-hover;
+    border-color: $bd-hover;
+  }
+}

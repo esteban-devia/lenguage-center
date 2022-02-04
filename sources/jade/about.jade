@@ -1,0 +1,107 @@
+extends  _skeleton
+
+block variables
+  - var activeIndex = 2
+
+block title
+  title About
+
+block page
+  // Page Header
+  include _header
+
+  // Page Content
+  main.page-content
+    section.section-40.section-lg-139
+      .shell
+        h3.text-center
+          span.text-bold Who we are
+          span.divider
+        .range.range-sm-center
+          .cell-sm-6.cell-lg-4
+            p Language Center specialises in languages education. Since its establishment in 2000, this unique school has supported thousands of students to pursue their interest in language learning and to experience the joy of embracing another culture.
+          .cell-sm-6.cell-lg-4
+            p The school was initially founded as a secondary school for students from all three sectors. In 2002 the school introduced its first classes for students from Reception to Year 7. Since then our primary classes have continued to grow in popularity and demand.
+          .cell-sm-6.offset-sm-top-30.cell-lg-4.offset-lg-top-6.text-center
+            +img("about-01-370x149")
+
+    section.bg-gray-lighter.section-40.section-lg-139
+      h3.text-center.inset-15
+        span.text-bold Achieve more with us!
+        span.divider
+      .range.range-sm-center.inset-xs-30
+        .cell-sm-6.cell-lg2-4
+          +banner({
+            fakeHeading: "<span>New</span><br><span>Opportunities</span>",
+            heading: "<span class=\"text-bold\">New</span><br><span>Opportunities</span>",
+            content: "The Language Center aims to enhance access, choice and continuity in language learning for learners, through the provision of quality programs in a broad range of languages that complement and supplement languages programs offered in mainstream schools and ethnic schools."
+          })
+        .cell-sm-6.cell-lg2-4
+          +banner({
+            fakeHeading: "<span>Flexible</span><br><span>Approach</span>",
+            heading: "<span class=\"text-bold\">Flexible</span><br><span>Approach</span>",
+            content: "Students come together to learn the language of their choice, which may not be available at their own school. Lessons are held once a week in a friendly environment of committed professionals and motivated students. It provides a sustained focus on a wide range of learning activities."
+          })
+
+    section.section-40.section-lg-139
+      .shell
+        h3.text-center
+          span.text-bold Why study
+          br
+          span with us?
+          span.divider
+        ol.list-index
+          li
+            .list-index-counter
+            | We provide a quality Academic English pathway.
+          li
+            .list-index-counter
+            | We offer Professional English courses designed to equip students to achieve their career goals.
+          li
+            .list-index-counter
+            | We have a General English course for learners from Elementary to Advanced level.
+          li
+            .list-index-counter
+            | We provide ELITE Programs which include study tours, customised courses for specific groups and corporate programs.
+          li
+            .list-index-counter
+            | We provide a language testing and test preparation.
+          li
+            .list-index-counter
+            | Our staff is committed professional language teachers and support staff.
+
+    section.bg-gray-lighter.section-40.section-lg-139
+      h3.text-center.inset-15
+        span.text-bold Our teachers
+        span.divider
+      .range.range-sm-center.inset-xs-30
+        .cell-sm-6.cell-lg2-4
+          +thumbnail-2({
+            thumbImage: "about-02-642x400",
+            thumbHeading: "<span class=\"text-bold\">Niel</span><br><span>Ventura</span>",
+            thumbContent: "Niel is an energetic teacher who likes writing, acting and making music. He enjoys bringing theatre into the classroom. Neil has travelled through Europe, although the Western Cape called him home to teach those at LC."
+          })
+        .cell-sm-6.cell-lg2-4
+          +thumbnail-2({
+            thumbImage: "about-03-642x400",
+            thumbHeading: "<span class=\"text-bold\">Kim</span><br><span>Miller</span>",
+            thumbContent: "Kim loves to travel and experience new cultures. She has taught English for 5 years. When not in the classroom, Kim enjoys music and the outdoors either walking in the forest or mountains."
+          })
+      .range.range-sm-center.inset-xs-30.offset-top-30
+        .cell-sm-6.cell-lg2-4
+          +thumbnail-2({
+            thumbImage: "about-04-642x400",
+            thumbHeading: "<span class=\"text-bold\">Alexandra</span><br><span>Garcia</span>",
+            thumbContent: "Alexandra is a passionate teacher who derives tremendous satisfaction from seeing her students reach their goals and improve their language skills. She is originally from Durban, KwaZulu-Natal and moved to Cape Town in 2013."
+          })
+        .cell-sm-6.cell-lg2-4
+          +thumbnail-2({
+            thumbImage: "about-05-642x400",
+            thumbHeading: "<span class=\"text-bold\">Mark</span><br><span>Anderson</span>",
+            thumbContent: "Mark is an adventurous person who loves to share his knowledge with his students. He enjoys excursions and has a passion for languages, making LC his favourite place."
+          })
+
+    .divider-1
+
+  // Page Footer
+  include _footer

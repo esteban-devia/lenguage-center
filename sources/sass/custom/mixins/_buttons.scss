@@ -1,0 +1,94 @@
+// Custom button variants
+//
+
+@mixin button-variant-custom($clr, $bg, $bd, $clr-hover, $bg-hover, $bd-hover) {
+  color: $clr;
+  background-color: $bg;
+  border-color: $bd;
+
+  &:focus,
+  &.focus,
+  &:hover,
+  &:active,
+  &.active,
+  .open > &.dropdown-toggle {
+    color: $clr-hover;
+    background-color: $bg-hover;
+    border-color: $bd-hover;
+  }
+
+  &:active,
+  &.active,
+  .open > &.dropdown-toggle {
+    @include box-shadow($shadow-area-sm);
+
+    // TODO Optimize css export
+    &:hover,
+    &:focus,
+    &.focus {
+      color: $clr-hover;
+      background-color: $bg-hover;
+      border-color: $bd-hover;
+    }
+  }
+
+  &.disabled,
+  &[disabled],
+  fieldset[disabled] & {
+    pointer-events: none;
+    opacity: .5;
+  }
+
+  .badge {
+    color: $bg;
+    background-color: $clr;
+  }
+}
+
+@mixin make-button-layout(
+  $btn-height,
+  $btn-size: $btn-height * .5,
+  $btn-border: 2px,
+  $horizontal-padding: $btn-height * .5,
+  $border-radius: 0,
+  $min-width: null,
+  $size-ratios: (0: 1)
+) {
+  $vertical-padding: ($btn-height - $btn-size - $btn-border * 2) / 2;
+
+  @mixin size-conversion($size-ratio) {
+    padding: ceil($vertical-padding * $size-ratio) ceil($horizontal-padding * $size-ratio);
+    font-size: ceil($btn-size * $size-ratio);
+    line-height: ceil($btn-size * $size-ratio);
+    border-radius: ceil($border-radius * $size-ratio);
+    @if $min-width != null {
+      min-width: $min-width * $size-ratio;
+    }
+  }
+
+  @mixin make-size-ratio($size-ratios) {
+    @each $resolution, $size-ratio in $size-ratios {
+      @if ($resolution == 0) {
+        @if ($size-ratio != none) {
+          @include size-conversion($size-ratio);
+        }
+      } @else if type-of($resolution) == number {
+        @if ($size-ratio != none) {
+          @media (min-width: $resolution) {
+            @include size-conversion($size-ratio);
+          }
+        }
+      } @else if type-of($resolution) == list {
+        @if ($size-ratio != none) {
+          @media (min-width: nth($resolution, 1)) and (min-height: nth($resolution, 2)) {
+            @include size-conversion($size-ratio);
+          }
+        }
+      }
+    }
+  }
+
+  border-width: $btn-border;
+  @include make-size-ratio($size-ratios);
+
+}

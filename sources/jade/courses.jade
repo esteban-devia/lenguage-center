@@ -1,0 +1,96 @@
+extends  _skeleton
+
+block variables
+  - var activeIndex = 3
+
+block title
+  title Courses
+
+block page
+  // Page Header
+  include _header
+
+  // Page Content
+  main.page-content
+    section.bg-gray-lighter.section-40.section-lg-139
+      h3.text-center.inset-15
+        span.text-bold Study areas
+        span.divider
+      .range.range-sm-center.inset-xs-30
+        .cell-sm-6.cell-lg2-4
+          +thumbnail-2({
+            thumbImage: "courses-01-642x400",
+            thumbHeading: "<span class=\"text-bold\">European</span><br><span>studies</span>",
+            thumbContent: "In European Studies, students gain insights into the cultures, history and politics of modern Europe and have the opportunity to study one of the five European languages taught in the Center."
+          })
+        .cell-sm-6.cell-lg2-4
+          +thumbnail-2({
+            thumbImage: "courses-02-642x400",
+            thumbHeading: "<span class=\"text-bold\">French</span><br><span>studies</span>",
+            thumbContent: "The overall objective of the French Studies program is to enable you to develop an ability to communicate effectively in the French language in order to enhance your understanding of the French-speaking world."
+          })
+      .range.range-sm-center.inset-xs-30.offset-top-30
+        .cell-sm-6.cell-lg2-4
+          +thumbnail-2({
+            thumbImage: "courses-03-642x400",
+            thumbHeading: "<span class=\"text-bold\">Italian</span><br><span>studies</span>",
+            thumbContent: "Italian studies can be studied for up to four years at an undergraduate level and then continued at a graduate level. Areas of expertise include Italian cinema, history, linguistics, literature, and issues in teaching and learning."
+          })
+        .cell-sm-6.cell-lg2-4
+          +thumbnail-2({
+            thumbImage: "courses-04-642x400",
+            thumbHeading: "<span class=\"text-bold\">German</span><br><span>studies</span>",
+            thumbContent: "The German studies program provides the study of an environment with excellent access to talented and enthusiastic teaching staff with wide-ranging interests in German language and culture."
+          })
+
+    section.section-40.section-lg-139
+      .shell
+        h3.text-center
+          span.text-bold Our programs
+          span.divider
+        .range.range-sm-center.text-center
+          .cell-sm-6.cell-lg-4
+            h4: a(href="#") Adult classes
+            p Our language programs for adults combine a diversity of teaching techniques that focus on a communicative approach and provide students with the necessary skills and concepts to feel comfortable to speak and understand others in a foreign language environment.
+          .cell-sm-6.cell-lg-4
+            h4: a(href="#") Children classes
+            p Our language center currently provides children group classes to learn a variety of different world languages. Children are naturally more "efficient" foreign language learners and have a great capacity to learn a second language.
+          .cell-sm-6.offset-sm-top-30.cell-lg-4.offset-mac-top-0
+            h4: a(href="#") School programs
+            p Our school programs are divided into themes. The program duration is 10 weeks. During each program we introduce two themes and a series of games and activities that develop the skills needed to learn a second language in a consistent and sequential manner.
+
+    section.bg-gray-lighter.section-40.section-lg-139
+      h3.text-center.inset-15
+        span.text-bold Online learning
+        span.divider
+      .range.range-sm-center.inset-xs-30
+        .cell-sm-6.cell-lg-4
+          +banner({
+            fakeHeading: "<span>Learn a language</span><br><span>whenever you want!</span>",
+            heading: "<span class=\"text-bold\">Learn a language</span><br><span>whenever you want!</span>",
+            content: "Don\'t have time to travel to our center? Enjoy online lessons from home, work, or your preferred location with one of our teachers at a convenient time for you!"
+          })
+        .cell-sm-6.cell-lg-4
+          +banner({
+            fakeHeading: "<span>Experienced</span><br><span>Teachers</span>",
+            heading: "<span class=\"text-bold\">Experienced</span><br><span>Teachers</span>",
+            content: "All our lessons are taught by experienced teachers of the foreign language with an educational background and at least one year of experience."
+          })
+        .offset-top-30.cell-sm-6.cell-lg-4.offset-lg-top-0
+          +banner({
+            fakeHeading: "<span>Just like an</span><br><span>in-person lesson!</span>",
+            heading: "<span class=\"text-bold\">Just like an</span><br><span>in-person lesson!</span>",
+            content: "Our platform supports video, sound, chat, whiteboard, document sharing and much more! Both you and your instructor feel like you are in the same room."
+          })
+
+    section.section-40.section-lg-139
+      .shell
+        h3.text-center
+          span.text-bold Private lessons
+          span.divider
+        .range
+          .cell-md-6: p A private lesson is a great option for those students who are learning a language with a specific goal in mind or those who prefer the one-on-one instruction without distractions. Lessons can be arranged for one student or more.
+          .cell-md-6: p Private lessons allow the student or students to focus on any aspect that they would like to study - for example, conversational skills, grammar, cultural exposure, certain vocabulary, or the like; or simply learn a language in a private setting.
+
+  // Page Footer
+  include _footer

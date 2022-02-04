@@ -1,0 +1,36 @@
+extends  _skeleton
+
+block variables
+  - var activeIndex = 0
+
+block title
+  title 404
+
+block page
+  // Page Header
+  include _header
+
+  // Page Content
+  main.page-content.vertical-limiter-2
+    section.section-40.section-lg-139
+      .shell
+        h3.text-center
+          span.text-bold 404
+          span.divider
+        .range.range-xs-center
+          .cell-md-7.text-center
+            h4 Sorry, page not found
+            p The page you are looking for might have been removed, had its name changed, or is temporarily unavailable. Please try using our search box below to look for information on the website.
+
+            // RD Search
+            form.rd-search.range(action="search-results.html", method="GET", data-search-live="rd-search-results-live")
+              .cell-sm-7.relative
+                .form-group
+                  label(for="rd-search-form-input" class="form-label") Keyword
+                  input(class="form-control" id="rd-search-form-input" type="text" name="s" autocomplete="off")
+                #rd-search-results-live.rd-search-results-live
+              .cell-sm-5
+                button.btn.btn-md-1.btn-primary(type='submit') Search
+
+  // Page Footer
+  include _footer

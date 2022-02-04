@@ -1,0 +1,71 @@
+extends  _skeleton
+
+block variables
+  - var activeIndex = 0
+
+block title
+  title Blog Post
+
+block page
+  // Page Header
+  include _header
+
+  // Page Content
+  main.page-content
+    section.section-40.section-lg-139
+      .shell.box-skin-1
+        +img("blog-post-01-1170x474")
+        h3
+          span.text-bold A historical evening
+          br
+          span at Language Center
+        +post-meta([
+          {icon:"fa-calendar", meta: "21 jun 2016"},
+          {icon:"fa-user", meta: "admin"},
+          {icon:"fa-comments", meta: "2 Comments", link: "#comments"}
+        ])
+        p The Language Center's Quadrennial Dinner was a historical evening for the academic staff, the center's board, and our alumni who visited us once again. The event, which was the 16th installment of the LC's Annual Dinner tradition and commemorated the center's anniversary, welcomed a record-breaking 1,000 guests. The reception was held at the Waldorf Astoria hotel in NYC on May 2 and raised a total of $5 million, which quickly became the second-highest turnout our gala dinners has ever raised before. That was all thanks to 217 gifts from across the community and a surprise matching gift by Jerry Speyer '98, chairman of Tishman Spiegel and a member of the LC's Board of Overseers.
+        p As the Quadrennial Dinner opened up its doors, dinner co-chairs Mark F. Bennetto of the '01 class, managing director of General Atlantic, and Kevin Broderick '00, principal at Alex & Wright Inc., announced that the event had raised a remarkable $5 million, including gifts and donations from a record-setting 95 new-coming donor. This mark that's been reached just officially became the most ever to be raised at such an annual event. Afterward, during the second half of the program, Mr. Spiegel promised to match the evening's $5 million in honor of the Quadrennial Award honoree Henry R. Kravis '03, pinning down this Quadrennial Dinner as one of the most pompous and significant events in the LC's history.
+        p "What a truly historical occasion," Dean Glenn Peabody says of the event. "I want to thank Jerry for his extraordinary donations, which will help support financial aid, faculty researches, and entrepreneurial outreach at the LC. Also, I want to thank Mark and Ming for their exceptional leadership of the event. Surely, such a remarkable success is truly a result of the outreaching generosity of everyone who came to this gala dinner. For your ongoing dedication to the LC, you have my sincerest thank you." - he told the cheering crowd and it burst into applauses.
+        p The Quadrennial Dinner, among everyone else, honored Mr. Travis. He's a co-founder, co-chairman, and co-CEO of Kohlberg Travis Roberts & Co. This Quadrennial Award acknowledged his lifetime achievements of support for, and outstanding contributions to, the LU and to society by and large. "[Henry] has proven himself to be the strongest pillar of our University's community," Dean Peabody said. "I and we all owe him an insurmountable debt of gratefulness. It's due to his visionary leadership of the LU's Board of Overseers."
+        p Bruce Greenwald, the Robert Heilbrunn Professor of Finance and Asset Management and co-director of the Heilbrunn Center for Graham & Dodd Investing, was honored with the Lifetime Achievement Award. He got it for his extraordinary history of inspiring and enlightening the students who were studying at the Language Center. Moreso, during the dinner's course, Dean Peabody announced that a group of alumni and Greenwald's friends had promised to create a professorship and accompanying research fund at the Language Center in Greenwald's name. The Greenwald Professorship will be permanently gifted.
+
+      .shell.offset-top-54.text-center.text-xs-left#comments
+        h4 Comments:
+        .range.range-sm-right.offset-md-top-39
+          .cell-sm-12
+            +comment({
+              image: "blog-post-02-70x70",
+              content: "It was really a memorable evening for all of our alumni and staff. As a teacher of Language Center, I am glad that Quadrennial Dinner helped to raise such a great amount on the further development of LC. If you have any photos of the event, please let me know!",
+              commentMeta: {meta1: "David Wallace", meta2: "21 Jun 2016"}
+            })
+          .cell-sm-11.offset-top-41
+            +comment({
+              image: "blog-post-03-70x70",
+              content: "I've took a lot of photos and videos of the gala... I will send them to the faculty staff soon. So stay tuned for a bright gallery followup, folks!",
+              commentMeta: {meta1: "John Deer", meta2: "21 Jun 2016"}
+            })
+
+      .shell.offset-top-41.offset-lg-top-65
+        h4 Leave a comment:
+        // RD Mailform
+        form.rd-mailform.offset-top-39(data-form-output="form-output-global", data-form-type='contact', method='post', action='bat/rd-mailform.php')
+          .range
+            .cell-sm-12
+              .form-group
+                label.form-label(for="contact-message") Message:
+                textarea#contact-message.form-control.height-1(name="message" data-constraints="@Required")
+            .cell-sm-4.cell-md-5.offset-top-30
+              .form-group
+                label.form-label(for="contact-name") Name:
+                input#contact-name.form-control(type="text" name="name" data-constraints="@Required")
+            .cell-sm-4.cell-md-5.offset-top-30
+              .form-group
+                label.form-label(for="contact-email") E-mail:
+                input#contact-email.form-control(type="email" name="email" data-constraints="@Required @Email")
+            .cell-sm-4.cell-md-2.offset-top-30
+              button(type="submit").btn.btn-primary.btn-md-1 Send
+
+
+  // Page Footer
+  include _footer

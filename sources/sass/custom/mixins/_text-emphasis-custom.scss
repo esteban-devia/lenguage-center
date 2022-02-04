@@ -1,0 +1,24 @@
+// Text emphasis
+// -------------------------
+
+@mixin text-emphasis-variant($parent, $color, $hcolor: none) {
+  #{$parent} {
+    &, a, a:focus {
+      color: $color;
+    }
+
+    a:hover {
+      @if($hcolor != none) { color: $hcolor; }
+      @else { color: darken($color, 10%); }
+    }
+  }
+
+  a#{$parent}:focus {
+    color: $color;
+  }
+
+  a#{$parent}:hover {
+    @if($hcolor != none) { color: $hcolor; }
+    @else { color: darken($color, 10%); }
+  }
+}
