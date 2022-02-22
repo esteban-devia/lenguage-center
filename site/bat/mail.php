@@ -23,17 +23,17 @@ try {
     $mail->isSMTP();                                            //Send using SMTP
     $mail->Host       = 'smtp.gmail.com';                       //Set the SMTP server to send through
     $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-    $mail->Username   = 'ing.esteban.devia@gmail.com';          //SMTP username
-    $mail->Password   = 'vohacclplxgobumd';                     //SMTP password
+    $mail->Username   = '';                                     //SMTP username
+    $mail->Password   = '';                                     //SMTP password
     $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
     $mail->Port       = 587;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
 
     //Recipients
-    $mail->setFrom('ing.esteban.devia@gmail.com', 'Mailer');
-    $mail->addAddress('ing.esteban.devia@gmail.com');     //Add a recipient
+    $mail->setFrom('', 'Mailer');
+    $mail->addAddress('');                                      //Add a recipient
 
     //Content
-    $mail->isHTML(true);                                  //Set email format to HTML
+    $mail->isHTML(true);                                        //Set email format to HTML
     $mail->Subject = 'Hay un nuevo Mensaje';
     $mail->Body    = <p>este es un nuevo mensaje</p>;
 
